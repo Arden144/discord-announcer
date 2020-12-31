@@ -1,0 +1,18 @@
+{
+    "env": {
+        "node": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:import/typescript",
+        "plugin:jest/recommended",
+        "plugin:jest/style",
+        "prettier",
+        "prettier/@typescript-eslint"
+    ]
+}
