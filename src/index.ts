@@ -1,10 +1,13 @@
 import { TextToSpeechClient } from '@google-cloud/text-to-speech';
 import * as dotenv from 'dotenv';
-import type { AnyGuildChannel, VoiceConnection } from 'eris';
+import type { VoiceConnection } from 'eris';
 import { Client, TextChannel, VoiceChannel } from 'eris';
 import { writeFile } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import onChannelCreate from './onChannelCreate';
+import onVoiceChannelJoin from './onVoiceChannelJoin';
+import { getTTSConfig } from './util/ttsUtil';
 dotenv.config();
 
 if (!process.env.TOKEN) {
@@ -36,41 +39,8 @@ bot.state = {
   channelGroups: [],
 };
 
-const getTextChannelName = (name: string) =>
-  name.toLowerCase().replace(' ', '-');
-
-const channelNameIs = (name: string) => (channel: AnyGuildChannel) =>
-  channel.name === name;
-
-bot.on('channelCreate', async (channel) => {
-  if (!(channel instanceof VoiceChannel)) return;
-
-  const { client, guild, name: voiceChannelName } = channel;
-
-  const textChannelName = getTextChannelName(voiceChannelName);
-
-  let textChannel = guild.channels.find(channelNameIs(textChannelName));
-  let created = false;
-
-  if (!(textChannel instanceof TextChannel)) {
-    textChannel = await guild.createChannel(textChannelName);
-    created = true;
-  }
-
-  client.state.channelGroups.push({
-    voiceChannel: channel,
-    textChannel,
-    created,
-  });
-});
-
-bot.on('voiceChannelJoin', (member, channel) => {
-  const { client } = channel;
-
-  if (!client.state.voiceConnection) {
-    client.state.voiceConnection = channel.join({});
-  }
-});
+bot.on('channelCreate', onChannelCreate);
+bot.on('voiceChannelJoin', onVoiceChannelJoin);
 
 // bot.connect();
 
@@ -84,18 +54,7 @@ const tts = new TextToSpeechClient({
 });
 
 tts
-  .synthesizeSpeech({
-    input: {
-      text: "I can't believe this actually works.",
-    },
-    voice: {
-      languageCode: 'en-US',
-      name: 'en-US-Wavenet-D',
-    },
-    audioConfig: {
-      audioEncoding: 'OGG_OPUS',
-    },
-  })
+  .synthesizeSpeech(getTTSConfig("I can't believe this actually works."))
   .then(([response]) =>
-    writeFile('jack.ogg', response.audioContent!, () => null),
+    writeFile('output.ogg', response.audioContent!, () => null),
   );
