@@ -6,9 +6,11 @@ export default <Config.InitialOptions>{
   moduleNameMapper: {
     '^@src/(.*)$': '<rootDir>/src/$1',
   },
+  collectCoverage: true,
+  collectCoverageFrom: ['src/**/*.ts'],
   globals: {
     'ts-jest': {
-      tsConfig: '<rootDir>/__tests__/tsconfig.json',
+      tsconfig: '<rootDir>/__tests__/tsconfig.json',
     },
   },
 };

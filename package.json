@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc -b",
     "start": "build && node dist/index.js",
-    "test": "jest --coverage=true"
+    "test": "jest"
   },
   "dependencies": {
     "@discordjs/opus": "0.3",
