@@ -1,5 +1,10 @@
 import { channelNameIs, getTextChannelName } from '@src/util/channelUtil';
-import type { TextChannel } from 'eris';
+import { TextChannel } from 'eris';
+jest.mock('eris', () => ({
+  TextChannel: jest.fn(() => ({
+    name: 'example-name',
+  })),
+}));
 
 test('getTextChannelName: Lowercase and spaces become dashes', () => {
   expect(getTextChannelName('Example Voice Channel')).toEqual(
@@ -8,7 +13,6 @@ test('getTextChannelName: Lowercase and spaces become dashes', () => {
 });
 
 test('channelNameIs: Check if channel name matches given string', () => {
-  expect(
-    channelNameIs('example-name')({ name: 'example-name' } as TextChannel),
-  ).toBeTruthy();
+  /// @ts-expect-error No need to provide arguments for the TextChannel constructor
+  expect(channelNameIs('example-name')(new TextChannel())).toBeTruthy();
 });
