@@ -1,15 +1,18 @@
-import Eris from 'eris';
-import { BotConfig } from './interfaces';
+import { Client } from 'eris';
+import { ClientState } from '../interfaces';
+import type { BotConfig } from './interfaces';
 import { connect, defaultState, registerEventHandlers } from './internal';
 
+export let client: Client;
+export let state: ClientState;
+
 export async function startBot(config: BotConfig): Promise<void> {
-  const client = Eris(config.token);
+  const { token, eventHandlers } = config;
+  state = config.state ?? defaultState;
 
-  registerEventHandlers(
-    client,
-    config.eventHandlers,
-    config.state ?? defaultState,
-  );
+  client = new Client(token);
 
-  connect(client);
+  registerEventHandlers(eventHandlers);
+
+  return connect();
 }

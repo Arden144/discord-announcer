@@ -1,4 +1,4 @@
-import { Client } from 'eris';
+import { client, state } from './index.js';
 import { ClientState } from '../interfaces';
 import { EventHandlers } from './interfaces';
 
@@ -16,11 +16,8 @@ function ifHandlerExistsPartial(state: ClientState) {
   };
 }
 
-export function registerEventHandlers(
-  client: Client,
-  eventHandlers: EventHandlers,
-  state: ClientState,
-): void {
+export function registerEventHandlers(eventHandlers: EventHandlers): void {
+  console.log(state);
   const ifHandlerExists = ifHandlerExistsPartial(state);
   client.on(
     'voiceChannelJoin',
@@ -29,6 +26,6 @@ export function registerEventHandlers(
   client.on('channelCreate', ifHandlerExists(eventHandlers.channelCreate));
 }
 
-export async function connect(client: Client): Promise<void> {
+export async function connect(): Promise<void> {
   return client.connect();
 }

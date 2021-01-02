@@ -1,5 +1,5 @@
-import { AnyChannel, Member, VoiceChannel } from 'eris';
-import { ClientState } from '../interfaces';
+import type { AnyChannel, Member, VoiceChannel } from 'eris';
+import type { ClientState } from '../interfaces';
 
 export interface EventHandlers {
   voiceChannelJoin?: (
