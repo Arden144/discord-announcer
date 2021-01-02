@@ -1,7 +1,7 @@
 import type { AnyChannel } from 'eris';
 import { TextChannel, VoiceChannel } from 'eris';
-import type { ClientState } from './interfaces';
-import { channelNameIs, getTextChannelName } from './util/channelUtil';
+import type { ClientState } from '../interfaces';
+import { channelNameIs, getTextChannelName } from '../util/channelUtil';
 
 const onChannelCreate = async (
   state: ClientState,

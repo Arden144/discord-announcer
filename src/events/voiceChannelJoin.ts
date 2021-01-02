@@ -1,5 +1,5 @@
 import type { Member, VoiceChannel } from 'eris';
-import type { ClientState } from './interfaces';
+import type { ClientState } from '../interfaces';
 
 const onVoiceChannelJoin = (
   state: ClientState,

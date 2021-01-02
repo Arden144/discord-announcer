@@ -14,5 +14,5 @@ test('getTextChannelName: Lowercase and spaces become dashes', () => {
 
 test('channelNameIs: Check if channel name matches given string', () => {
   /// @ts-expect-error No need to provide arguments for the TextChannel constructor
-  expect(channelNameIs('example-name')(new TextChannel())).toBeTruthy();
+  expect(channelNameIs('example-name')(new TextChannel())).toBe(true);
 });
