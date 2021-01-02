@@ -1,11 +1,15 @@
 import type { AnyChannel } from 'eris';
 import { TextChannel, VoiceChannel } from 'eris';
+import type { ClientState } from './interfaces';
 import { channelNameIs, getTextChannelName } from './util/channelUtil';
 
-const onChannelCreate = async (channel: AnyChannel): Promise<void> => {
-  if (!(channel instanceof VoiceChannel)) return;
+const onChannelCreate = async (
+  state: ClientState,
+  voiceChannel: AnyChannel,
+): Promise<void> => {
+  if (!(voiceChannel instanceof VoiceChannel)) return;
 
-  const { client, guild, name: voiceChannelName } = channel;
+  const { guild, name: voiceChannelName } = voiceChannel;
 
   const textChannelName = getTextChannelName(voiceChannelName);
 
@@ -17,8 +21,8 @@ const onChannelCreate = async (channel: AnyChannel): Promise<void> => {
     created = true;
   }
 
-  client.state.channelGroups.push({
-    voiceChannel: channel,
+  state.channelGroups.push({
+    voiceChannel,
     textChannel,
     created,
   });
