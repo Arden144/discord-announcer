@@ -1,6 +1,4 @@
-import type { Config } from '@jest/types';
-
-export default <Config.InitialOptions>{
+export default {
   preset: 'ts-jest',
   testEnvironment: 'node',
   moduleNameMapper: {

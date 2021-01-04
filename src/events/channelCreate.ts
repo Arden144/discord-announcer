@@ -3,7 +3,7 @@ import { TextChannel, VoiceChannel } from 'eris';
 import type { ClientState } from '../interfaces';
 import { channelNameIs, getTextChannelName } from '../util/channelUtil';
 
-const onChannelCreate = async (
+const channelCreate = async (
   state: ClientState,
   voiceChannel: AnyChannel,
 ): Promise<void> => {
@@ -28,4 +28,4 @@ const onChannelCreate = async (
   });
 };
 
-export default onChannelCreate;
+export default channelCreate;

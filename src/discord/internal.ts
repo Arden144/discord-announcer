@@ -1,5 +1,5 @@
-import { client, state } from './index.js';
 import { ClientState } from '../interfaces';
+import { client, state } from './index.js';
 import { EventHandlers } from './interfaces';
 
 export const defaultState = <ClientState>{
@@ -17,8 +17,8 @@ function ifHandlerExistsPartial(state: ClientState) {
 }
 
 export function registerEventHandlers(eventHandlers: EventHandlers): void {
-  console.log(state);
   const ifHandlerExists = ifHandlerExistsPartial(state);
+  client.on('ready', ifHandlerExists(eventHandlers.ready));
   client.on(
     'voiceChannelJoin',
     ifHandlerExists(eventHandlers.voiceChannelJoin),
