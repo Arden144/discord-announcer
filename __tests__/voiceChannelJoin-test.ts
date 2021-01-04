@@ -3,17 +3,19 @@ import { voiceChannelJoin } from '@src/events';
 import { GuildData } from '@src/interfaces';
 import { Member, VoiceChannel, VoiceConnection } from 'eris';
 import { mocked } from 'ts-jest/utils';
+
+const joinVoiceChannelMock = jest.fn().mockImplementation(
+  () =>
+    new Promise((resolve) => {
+      /// @ts-expect-error Constructor doesn't require arguments
+      resolve(new VoiceConnection());
+    }),
+);
 jest.mock('eris', () => ({
   Member: jest.fn(),
   VoiceConnection: jest.fn(),
   VoiceChannel: jest.fn().mockImplementation(() => ({
-    join: jest.fn().mockImplementation(
-      () =>
-        new Promise((resolve) => {
-          /// @ts-expect-error Constructor doesn't require arguments
-          resolve(new VoiceConnection());
-        }),
-    ),
+    join: joinVoiceChannelMock,
     guild: {
       id: '1234',
     },
@@ -21,32 +23,26 @@ jest.mock('eris', () => ({
 }));
 jest.mock('@src/data');
 
-const MockVoiceChannel = mocked(VoiceChannel);
-const MockGetGuild = mocked(getGuild);
+const getGuildMock = mocked(getGuild);
 
 describe('onVoiceChannelJoin', () => {
   beforeEach(() => {
-    MockVoiceChannel.mockClear();
+    joinVoiceChannelMock.mockClear();
   });
 
   it("Creates a new voiceConnection if one doesn't exist", async () => {
-    MockGetGuild.mockReturnValueOnce({
+    getGuildMock.mockReturnValueOnce({
       channelGroups: [],
     });
-    /// @ts-expect-error Constructor doesn't require arguments
-    const mockVoiceChannelInstance = new VoiceChannel();
 
     /// @ts-expect-error Constructor doesn't require arguments
-    voiceChannelJoin(new Member(), mockVoiceChannelInstance);
+    voiceChannelJoin(new Member(), new VoiceChannel());
 
     // eslint-disable-next-line @typescript-eslint/unbound-method
-    expect(mockVoiceChannelInstance.join).toHaveBeenCalled();
+    expect(joinVoiceChannelMock).toHaveBeenCalled();
 
     await expect(
-      (MockGetGuild.mock.results[0].value as GuildData).voiceConnection,
+      (getGuildMock.mock.results[0].value as GuildData).voiceConnection,
     ).resolves.toBeInstanceOf(VoiceConnection);
   });
-
-  // it("Doesn't attempt to make another voiceConnection if one exists", () => {
-  // });
 });
