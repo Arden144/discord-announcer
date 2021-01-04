@@ -9,7 +9,7 @@ if (!process.env.TOKEN) {
   );
 }
 
-startBot({
+void startBot({
   token: process.env.TOKEN,
   eventHandlers: {
     ready,

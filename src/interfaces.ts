@@ -1,6 +1,6 @@
 import type { TextChannel, VoiceChannel, VoiceConnection } from 'eris';
 
-export interface ClientState {
+export interface GuildData {
   channelGroups: ChannelGroup[];
   voiceConnection?: Promise<VoiceConnection>;
 }

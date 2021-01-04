@@ -3,13 +3,19 @@
         "node": true
     },
     "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": ["./src/tsconfig.json", "./__tests__/tsconfig.json"]
+    },
     "extends": [
         "eslint:recommended",
-        "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
         "plugin:jest/recommended",
         "plugin:jest/style",
         "prettier",
         "prettier/@typescript-eslint"
-    ]
+    ],
+    "rules": {
+        "@typescript-eslint/no-non-null-assertion": "off"
+    }
 }
