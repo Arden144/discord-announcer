@@ -13,6 +13,7 @@ export function registerEventHandlers(eventHandlers: EventHandlers): void {
   client.on('ready', ifHandler(eventHandlers.ready));
   client.on('voiceChannelJoin', ifHandler(eventHandlers.voiceChannelJoin));
   client.on('channelCreate', ifHandler(eventHandlers.channelCreate));
+  client.on('messageCreate', ifHandler(eventHandlers.messageCreate));
 }
 
 export async function connect(): Promise<void> {

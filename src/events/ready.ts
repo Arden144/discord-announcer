@@ -1,5 +1,3 @@
-const ready = (): void => {
+export function ready(): void {
   console.log('ready');
-};
-
-export default ready;
+}

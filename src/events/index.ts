@@ -1,3 +1,4 @@
-export { default as channelCreate } from './channelCreate';
-export { default as ready } from './ready';
-export { default as voiceChannelJoin } from './voiceChannelJoin';
+export * from './channelCreate';
+export * from './messageCreate';
+export * from './ready';
+export * from './voiceChannelJoin';

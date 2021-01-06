@@ -5,8 +5,10 @@
         "lib": ["ES2020"],
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
+        "skipLibCheck": true,
         "strict": true,
         "declaration": true,
+        "sourceMap": true,
         "composite": true
     }
 }

@@ -1,11 +1,13 @@
 import type { Member, VoiceChannel } from 'eris';
-import { getGuild } from '../data';
+import { joinVoice } from '../discord';
+import { getQueue } from '../queue';
 
-const voiceChannelJoin = (member: Member, channel: VoiceChannel): void => {
-  const guildData = getGuild(channel.guild.id);
-  if (!guildData.voiceConnection) {
-    guildData.voiceConnection = channel.join({});
+export async function voiceChannelJoin(
+  member: Member,
+  channel: VoiceChannel,
+): Promise<void> {
+  const queue = getQueue(channel.guild.id);
+  if (!queue.connection) {
+    queue.connection = await joinVoice(channel.id);
   }
-};
-
-export default voiceChannelJoin;
+}
