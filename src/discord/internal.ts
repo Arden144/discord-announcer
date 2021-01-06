@@ -11,11 +11,11 @@ function ifHandler<T extends unknown[]>(handler: Handler<T> | undefined) {
 
 export function registerEventHandlers(eventHandlers: EventHandlers): void {
   client.on('ready', ifHandler(eventHandlers.ready));
-  client.on('voiceChannelJoin', ifHandler(eventHandlers.voiceChannelJoin));
+  client.on('voiceStateUpdate', ifHandler(eventHandlers.voiceStateUpdate));
   client.on('channelCreate', ifHandler(eventHandlers.channelCreate));
-  client.on('messageCreate', ifHandler(eventHandlers.messageCreate));
+  client.on('message', ifHandler(eventHandlers.message));
 }
 
-export async function connect(): Promise<void> {
-  return client.connect();
+export async function login(token: string): Promise<string> {
+  return client.login(token);
 }

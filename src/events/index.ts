@@ -1,4 +1,4 @@
 export * from './channelCreate';
-export * from './messageCreate';
+export * from './message';
 export * from './ready';
-export * from './voiceChannelJoin';
+export * from './voiceStateUpdate';

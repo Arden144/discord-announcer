@@ -377,6 +377,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@discordjs/collection@npm:^0.1.6":
+  version: 0.1.6
+  resolution: "@discordjs/collection@npm:0.1.6"
+  checksum: da87faf9975e9320a4aa5e8a78312849e4767eb5b0c3348612a0f2d07b5bad4bb91c8c65a5a8ffecc007574c5eebd4790d2e13880af6fd2ae865ba3161495f9a
+  languageName: node
+  linkType: hard
+
+"@discordjs/form-data@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "@discordjs/form-data@npm:3.0.1"
+  dependencies:
+    asynckit: ^0.4.0
+    combined-stream: ^1.0.8
+    mime-types: ^2.1.12
+  checksum: 2ddf4c9bba170ea325cabae28d8d4f3e2e132a4eded64d242dbaafb514d0109c338a18bd0cab4d3464dca8f2da1c6ddc870ef96b89d7b5ed16f155cd171bf1a4
+  languageName: node
+  linkType: hard
+
 "@discordjs/node-pre-gyp@npm:^0.1.0":
   version: 0.1.0
   resolution: "@discordjs/node-pre-gyp@npm:0.1.0"
@@ -397,7 +415,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@discordjs/opus@npm:0.3":
+"@discordjs/opus@npm:^0.3.3":
   version: 0.3.3
   resolution: "@discordjs/opus@npm:0.3.3"
   dependencies:
@@ -1484,6 +1502,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"bindings@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "bindings@npm:1.5.0"
+  dependencies:
+    file-uri-to-path: 1.0.0
+  checksum: bd623dec58f126eb0c30f04a20da7080f06cdd5af26bf5a91615e70055fbba66c4cec5c88b156e8181c1d822f2392034a40a9121ef3ebc25638dc2163332b12d
+  languageName: node
+  linkType: hard
+
 "brace-expansion@npm:^1.1.7":
   version: 1.1.11
   resolution: "brace-expansion@npm:1.1.11"
@@ -1557,6 +1584,16 @@ __metadata:
   version: 1.1.1
   resolution: "buffer-from@npm:1.1.1"
   checksum: 540ceb79c4f5bfcadaabbc18324fa84c50dc52905084be7c03596a339cf5a88513bee6831ce9b36ddd046fab09257a7c80686e129d0559a0cfd141da196ad956
+  languageName: node
+  linkType: hard
+
+"bufferutil@npm:^4.0.2":
+  version: 4.0.3
+  resolution: "bufferutil@npm:4.0.3"
+  dependencies:
+    node-gyp: latest
+    node-gyp-build: ^4.2.0
+  checksum: 38ffbf450e071e2fc2a1ba2e353d5602749e74fcc0a302322c331a68d089c5bfcfb7b71dbc7fa07cbf08c15eb94128e5478ba8392a7a3691fd3277ef2c61665c
   languageName: node
   linkType: hard
 
@@ -1749,7 +1786,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"combined-stream@npm:^1.0.6, combined-stream@npm:~1.0.6":
+"combined-stream@npm:^1.0.6, combined-stream@npm:^1.0.8, combined-stream@npm:~1.0.6":
   version: 1.0.8
   resolution: "combined-stream@npm:1.0.8"
   dependencies:
@@ -2033,26 +2070,45 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "discord-announcer@workspace:."
   dependencies:
-    "@discordjs/opus": 0.3
+    "@discordjs/opus": ^0.3.3
     "@google-cloud/text-to-speech": ^3.1.3
     "@types/jest": ^26.0.19
     "@types/node": ^14.14.19
     "@typescript-eslint/eslint-plugin": ^4.11.1
     "@typescript-eslint/parser": ^4.11.1
+    bufferutil: ^4.0.2
+    discord.js: ^12.5.1
     dotenv: ^8.2.0
-    eris: ^0.14.0
+    erlpack: ^0.1.3
     eslint: ^7.17.0
     eslint-config-prettier: ^7.1.0
     eslint-plugin-jest: ^24.1.3
     jest: ^26.6.3
+    libsodium-wrappers: ^0.7.8
     node-gyp: ^7.1.2
-    sodium-native: ^3.2.0
     ts-jest: ^26.4.4
     ts-node: ^9.1.1
     typescript: ^4.1.3
+    utf-8-validate: ^5.0.3
     zlib-sync: ^0.1.7
   languageName: unknown
   linkType: soft
+
+"discord.js@npm:^12.5.1":
+  version: 12.5.1
+  resolution: "discord.js@npm:12.5.1"
+  dependencies:
+    "@discordjs/collection": ^0.1.6
+    "@discordjs/form-data": ^3.0.1
+    abort-controller: ^3.0.0
+    node-fetch: ^2.6.1
+    prism-media: ^1.2.2
+    setimmediate: ^1.0.5
+    tweetnacl: ^1.0.3
+    ws: ^7.3.1
+  checksum: 18850040f3b945b0d60a89ea38df31d1abcca2879abc171b3a44d0b9ce163e0ad0a0119e0e417630cf56609483af6c4b5235f77cc84ae1bee0a2869aff25fae3
+  languageName: node
+  linkType: hard
 
 "doctrine@npm:^3.0.0":
   version: 3.0.0
@@ -2149,19 +2205,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eris@npm:^0.14.0":
-  version: 0.14.0
-  resolution: "eris@npm:0.14.0"
+"erlpack@npm:^0.1.3":
+  version: 0.1.3
+  resolution: "erlpack@npm:0.1.3"
   dependencies:
-    opusscript: ^0.0.7
-    tweetnacl: ^1.0.1
-    ws: ^7.2.1
-  dependenciesMeta:
-    opusscript:
-      optional: true
-    tweetnacl:
-      optional: true
-  checksum: 1cfb90c9d6739443636d8d1a9f279945e3c122f48dcd608fe0ff45d26bb42a8502bb3c77236ccce2ee3bb40ea2c3cf7574bb64f6767d17ae799324caaf10b3ae
+    bindings: ^1.5.0
+    nan: ^2.14.0
+    node-gyp: latest
+  checksum: 19a0d4c7e3d264c2adf6a2b7b582102ec279562e91a30d2886ead000da5dd5ded83ba6e39babf5fb4fd4ff178a804ca60897102950847cbc20ffffaf15e95a03
   languageName: node
   linkType: hard
 
@@ -2573,6 +2624,13 @@ __metadata:
   dependencies:
     flat-cache: ^3.0.4
   checksum: aec91f60f903a61f6edd8591f574692a36e054a99f7b1e280823316fde7d487aaf9a0b59db59387c6e071c10ce0e40771f8472067ebe746fe3b7f095f0877be0
+  languageName: node
+  linkType: hard
+
+"file-uri-to-path@npm:1.0.0":
+  version: 1.0.0
+  resolution: "file-uri-to-path@npm:1.0.0"
+  checksum: 5ddb9682f04f6f87b7765b93306206db2f96bc86162487e27639c55fe3ffeed12c30906ef1dedaa5307d7cabbbbdcbfa299b79aaec435de0f17e17ab31bd20b3
   languageName: node
   linkType: hard
 
@@ -3142,7 +3200,7 @@ google-gax@^2.9.2:
   languageName: node
   linkType: hard
 
-"ini@npm:^1.3.5, ini@npm:~1.3.0":
+"ini@npm:~1.3.0":
   version: 1.3.8
   resolution: "ini@npm:1.3.8"
   checksum: 62189ce7ea44c5778e757e4232c581212e838f3c39e79d931bb9152fd4b9275f09fb20b96afdd60ba9f5d7996b92486cad6cc617fcb84ff4beedd1b33b86221e
@@ -4165,6 +4223,22 @@ google-gax@^2.9.2:
   languageName: node
   linkType: hard
 
+"libsodium-wrappers@npm:^0.7.8":
+  version: 0.7.8
+  resolution: "libsodium-wrappers@npm:0.7.8"
+  dependencies:
+    libsodium: 0.7.8
+  checksum: e99a017afef88a7c024d228ee8cb48f6ec683e8be9b00a95652c898890cf2c7834f646c70a9a4b996cf5dd44aa743aefe3a3500d97da7d80f40898420c3aa549
+  languageName: node
+  linkType: hard
+
+"libsodium@npm:0.7.8":
+  version: 0.7.8
+  resolution: "libsodium@npm:0.7.8"
+  checksum: c87ff45a59ada4e52e881fdbfa8d542b5c3434d9564d16b1f365354884e80c017e439e6aa49a2854b63ee4c2df1a2b63538b2804cb8e774c52ca311ec4d31905
+  languageName: node
+  linkType: hard
+
 "lines-and-columns@npm:^1.1.6":
   version: 1.1.6
   resolution: "lines-and-columns@npm:1.1.6"
@@ -4777,13 +4851,6 @@ google-gax@^2.9.2:
   languageName: node
   linkType: hard
 
-"opusscript@npm:^0.0.7":
-  version: 0.0.7
-  resolution: "opusscript@npm:0.0.7"
-  checksum: 3fc224fbe9608af9ab354b24e3e7c9bde5f1de6419c1c86882edf7781cda52bb82526e8990a63f8991ec15a14e16e7f8e49aeacd0cc99bc9c4376d2476d9b386
-  languageName: node
-  linkType: hard
-
 "os-homedir@npm:^1.0.0":
   version: 1.0.2
   resolution: "os-homedir@npm:1.0.2"
@@ -4986,6 +5053,27 @@ google-gax@^2.9.2:
     ansi-styles: ^4.0.0
     react-is: ^17.0.1
   checksum: 5ad34fc128218485732cf0271d396158a00584708fc97bf063c1c3c000fe14da572e9a1d3d7b92d95c5e24965434656c56ed0e45804dea2435ca59a1f86f1b07
+  languageName: node
+  linkType: hard
+
+"prism-media@npm:^1.2.2":
+  version: 1.2.3
+  resolution: "prism-media@npm:1.2.3"
+  peerDependencies:
+    "@discordjs/opus": ^0.3.3
+    ffmpeg-static: ^4.2.7 || ^3.0.0 || ^2.4.0
+    node-opus: ^0.3.3
+    opusscript: ^0.0.7
+  peerDependenciesMeta:
+    "@discordjs/opus":
+      optional: true
+    ffmpeg-static:
+      optional: true
+    node-opus:
+      optional: true
+    opusscript:
+      optional: true
+  checksum: 337cfb80dba36ffb96989b3b6832cf1e46b0706da73ebb3d3de6a6d1429302e318961ee5cc048ea3e997c23c543e950d08a20a89cadc84ec37b2b0a856946397
   languageName: node
   linkType: hard
 
@@ -5460,6 +5548,13 @@ google-gax@^2.9.2:
   languageName: node
   linkType: hard
 
+"setimmediate@npm:^1.0.5":
+  version: 1.0.5
+  resolution: "setimmediate@npm:1.0.5"
+  checksum: 87884d8add4779fe47ccf763396a5bf875640ae34d80a10802da4de5c25d87647c12f6e7748fd5b8c143b57201caf2a5a781631456c228825f166ca305c12f20
+  languageName: node
+  linkType: hard
+
 "shebang-command@npm:^1.2.0":
   version: 1.2.0
   resolution: "shebang-command@npm:1.2.0"
@@ -5564,17 +5659,6 @@ google-gax@^2.9.2:
     source-map-resolve: ^0.5.0
     use: ^3.1.0
   checksum: c30b63a732bf37dbd2147bf57b4d9eac651ab7b313d1521f73855154b2c2f5a3f2ad18bd47e21cc64b6991f868ecb2a99f8da973ca86da39956f1f0f720b7033
-  languageName: node
-  linkType: hard
-
-"sodium-native@npm:^3.2.0":
-  version: 3.2.0
-  resolution: "sodium-native@npm:3.2.0"
-  dependencies:
-    ini: ^1.3.5
-    node-gyp: latest
-    node-gyp-build: ^4.2.0
-  checksum: 29672a15a608cc68aef56c6cf47e6d22c87dd13b76add65b900e33504cb82a9dbd6dc736c46945829b26631eae1423e039ce78a354aad5c358d0ca1044b42e32
   languageName: node
   linkType: hard
 
@@ -6114,7 +6198,7 @@ google-gax@^2.9.2:
   languageName: node
   linkType: hard
 
-"tweetnacl@npm:^1.0.1":
+"tweetnacl@npm:^1.0.3":
   version: 1.0.3
   resolution: "tweetnacl@npm:1.0.3"
   checksum: 1188f3ef85db04d6dba632d211e481ae0a5805974491633ff60bd56ae3362312dfea1515e0d200685867b69ff212e8778e26923f8203e3c335064b07f620a6c7
@@ -6238,6 +6322,16 @@ typescript@^4.1.3:
   version: 3.1.1
   resolution: "use@npm:3.1.1"
   checksum: 8dd3bdeeda53864c779e0fa8d799064739708f80b45d06fa48a1a6ba192dc3f9e3266d4556f223cd718d27aedfd957922152e7463c00ac46e185f8331353fb6f
+  languageName: node
+  linkType: hard
+
+"utf-8-validate@npm:^5.0.3":
+  version: 5.0.4
+  resolution: "utf-8-validate@npm:5.0.4"
+  dependencies:
+    node-gyp: latest
+    node-gyp-build: ^4.2.0
+  checksum: 14dc9e6af0471436a419505205d2d46a9e89109fe88b0920abe58323029ef260a454b9e27ce5a6700b40c15f182bb139f0bd3eb7c58e318b92eaf4d522be04af
   languageName: node
   linkType: hard
 
@@ -6448,7 +6542,7 @@ typescript@^4.1.3:
   languageName: node
   linkType: hard
 
-"ws@npm:^7.2.1, ws@npm:^7.2.3":
+"ws@npm:^7.2.3, ws@npm:^7.3.1":
   version: 7.4.2
   resolution: "ws@npm:7.4.2"
   peerDependencies:

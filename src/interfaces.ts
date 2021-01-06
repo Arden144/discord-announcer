@@ -1,4 +1,4 @@
-import type { TextChannel, VoiceChannel, VoiceConnection } from 'eris';
+import type { TextChannel, VoiceChannel, VoiceConnection } from 'discord.js';
 
 export interface GuildData {
   channelGroups: ChannelGroup[];

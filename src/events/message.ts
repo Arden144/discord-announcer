@@ -1,12 +1,12 @@
-import { Message, TextableChannel, TextChannel } from 'eris';
 import { Readable } from 'stream';
 import { getGuild } from '../data';
 import { tts } from '..';
 import { getQueue } from '../queue';
 import { getTTSConfig } from '../util/ttsUtil';
+import { Message, TextChannel } from 'discord.js';
 
-export async function messageCreate(
-  message: Message<TextableChannel>,
+export async function message(
+  message: Message,
 ): Promise<void> {
   if (!(message.channel instanceof TextChannel)) return;
 

@@ -1,39 +1,48 @@
 import {
   Client,
   Message,
-  TextableChannel,
   TextChannel,
+  VoiceChannel,
   VoiceConnection,
-} from 'eris';
+} from 'discord.js';
 import type { BotConfig } from './interfaces';
-import { connect, registerEventHandlers } from './internal';
+import { login, registerEventHandlers } from './internal';
 
 export let client: Client;
 
-export async function startBot(config: BotConfig): Promise<void> {
+export async function startBot(config: BotConfig): Promise<string> {
   const { token, eventHandlers } = config;
 
-  client = new Client(token);
+  client = new Client();
 
   registerEventHandlers(eventHandlers);
 
-  return connect();
+  return login(token);
 }
 
 export async function createGuildChannel(
   guildID: string,
   name: string,
 ): Promise<TextChannel> {
-  return client.createChannel(guildID, name);
+  const guild = await client.guilds.fetch(guildID);
+  return guild.channels.create(name);
 }
 
 export async function joinVoice(channelID: string): Promise<VoiceConnection> {
-  return client.joinVoiceChannel(channelID);
+  const channel = await client.channels.fetch(channelID);
+  if (!(channel instanceof VoiceChannel)) {
+    throw Error('channelID did not match a voice channel');
+  }
+  return channel.join();
 }
 
 export async function sendMessage(
   channelID: string,
   message: string,
-): Promise<Message<TextableChannel>> {
-  return client.createMessage(channelID, { content: message });
+): Promise<Message> {
+  const channel = await client.channels.fetch(channelID);
+  if (!(channel instanceof TextChannel)) {
+    throw Error('channelID did not match a text channel');
+  }
+  return channel.send(message);
 }

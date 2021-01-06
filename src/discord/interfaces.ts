@@ -1,10 +1,10 @@
-import type { AnyChannel, Member, Message, TextableChannel, VoiceChannel } from 'eris';
+import { Channel, Message, VoiceState } from 'discord.js';
 
 export interface EventHandlers {
   ready?: () => void;
-  voiceChannelJoin?: (member: Member, channel: VoiceChannel) => void;
-  channelCreate?: (channel: AnyChannel) => void;
-  messageCreate?: (message: Message<TextableChannel>) => void;
+  voiceStateUpdate?: (oldState: VoiceState, newState: VoiceState) => void;
+  channelCreate?: (channel: Channel) => void;
+  message?: (message: Message) => void;
 }
 
 export interface BotConfig {
