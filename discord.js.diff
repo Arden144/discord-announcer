@@ -1,0 +1,12 @@
+diff --git a/src/index.js b/src/index.js
+index 7319115fe1ef1e499c71566a6d19fc707e5e8e05..8f40074bda5a3adc54e9a41f7dc7b5b0e48b14af 100644
+--- a/src/index.js
++++ b/src/index.js
+@@ -6,6 +6,7 @@ module.exports = {
+   // "Root" classes (starting points)
+   BaseClient: require('./client/BaseClient'),
+   Client: require('./client/Client'),
++  VoiceConnection: require('./client/voice/VoiceConnection'),
+   Shard: require('./sharding/Shard'),
+   ShardClientUtil: require('./sharding/ShardClientUtil'),
+   ShardingManager: require('./sharding/ShardingManager'),

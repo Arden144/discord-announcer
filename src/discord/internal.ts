@@ -1,4 +1,4 @@
-import { client } from './index.js';
+import { client } from './index';
 import { EventHandlers } from './interfaces';
 
 type Handler<T extends unknown[]> = (...args: T) => void;

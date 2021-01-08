@@ -1,6 +1,6 @@
 import { channelNameIs, getTextChannelName } from '@src/util/channelUtil';
-import { TextChannel } from 'eris';
-jest.mock('eris', () => ({
+import { TextChannel } from 'discord.js';
+jest.mock('discord.js', () => ({
   TextChannel: jest.fn(() => ({
     name: 'example-name',
   })),

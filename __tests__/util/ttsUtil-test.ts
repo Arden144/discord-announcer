@@ -7,7 +7,7 @@ test('getTTSConfig: Produces a valid TTS Config', () => {
     },
     voice: {
       languageCode: 'en-US',
-      name: 'en-US-Wavenet-D',
+      name: 'en-US-Wavenet-J',
     },
     audioConfig: {
       audioEncoding: 'OGG_OPUS',
