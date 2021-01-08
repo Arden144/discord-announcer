@@ -1,5 +1,5 @@
 import { joinVoice } from '@src/discord';
-import { voiceStateUpdate } from '@src/events';
+import { voiceStateUpdate } from '@src/events/voiceStateUpdate';
 import { getQueue } from '@src/queue';
 import { Queue } from '@src/queue/interfaces';
 import { VoiceConnection, VoiceState } from 'discord.js';
